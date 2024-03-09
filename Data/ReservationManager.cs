@@ -131,6 +131,20 @@ namespace Assignment2.Components.Pages.Data
             // Add code to change the status from Active to Cancelled for the selected flight
             // and update the record in the reservation.csv file  
             // ...................................
+             for (int i = 0; i < lines.Count; i++)
+             {
+                 string[] parts = lines[i].Split(",");
+                 string reservationCode = parts[0];
+            
+                 if (reservationCode == res.Code)
+                 {
+                     parts[6] = "Cancelled";
+            
+                     lines[i] = string.Join(",", parts);
+            
+                     break;
+                 }
+             }
 
             File.WriteAllLines(Reservation_TXT, lines);
         }
