@@ -133,8 +133,8 @@ namespace Assignment2.Components.Pages.Data
 
             foreach (Flight flight in flights)
             {
-                if ((from == null || flight.FromAirport.Equals(from)) &&
-                    (to == null || flight.ToAirport.Equals(to)) &&
+                if ((from == WEEKDAY_ANY || flight.From.Equals(from)) &&
+                    (to == WEEKDAY_ANY || flight.To.Equals(to)) &&
                     (weekday == WEEKDAY_ANY || flight.Weekday.Equals(weekday)))
                 {
                     found.Add(flight);
