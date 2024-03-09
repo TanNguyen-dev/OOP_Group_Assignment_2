@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,7 +52,7 @@ namespace Assignment2.Components.Pages.Data
         // TODO
         // define the airports file path  
         // ...................................
-        public static string AIRPORTS_TEXT = "";    // TODO (Update the path)
+        public static string AIRPORTS_TEXT = (@"..\..\..\..\..\Resources\Files\airports.csv;") // TODO (Update the path)
 
         public static List<Flight> flights = new List<Flight>();
         public static List<string> airports = new List<string>();
@@ -127,9 +127,19 @@ namespace Assignment2.Components.Pages.Data
         {
             List<Flight> found = new List<Flight>();
 
-           // TODO
-           // find all flights that match the input arguments  
-           // ...................................
+            // TODO
+            // find all flights that match the input arguments  
+            // ...................................
+
+            foreach (Flight flight in flights)
+            {
+                if ((from == null || flight.FromAirport.Equals(from)) &&
+                    (to == null || flight.ToAirport.Equals(to)) &&
+                    (weekday == WEEKDAY_ANY || flight.Weekday.Equals(weekday)))
+                {
+                    found.Add(flight);
+                }
+            }
 
             return found;
         }
